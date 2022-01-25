@@ -1,0 +1,31 @@
+<div class="grid">
+    <div class="content-cards" *ngFor="let character of characters">
+
+        <div class="card border-secondary mb-3">
+            <div class="img">
+                <a [routerLink]="['/character-details', character.id]">
+                    <img [src]="character.image"
+                         [alt]="character.name"
+                         class="car-img-top"/>
+                </a>
+            </div>
+            <div class="card-inner">
+                <div class="header">
+                    <a [routerLink]="['/character-details', character.id]">
+                        <h2>{{character.name}}</h2>
+                    </a>
+                    <h4 class="text-muted">{{character.gender}}</h4>
+                    <small class="text-muted">{{character.created}}</small>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-12 mt-5 container-notFound">
+        <p>Not founds...</p>
+    </div>
+</div>
+
+<button class="btn btn-dark">
+    Go Up!
+</button>
