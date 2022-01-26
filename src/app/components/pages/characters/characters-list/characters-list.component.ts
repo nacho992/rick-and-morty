@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, Inject, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Character } from 'src/app/interfaces/character.interface';
 import { CharacterService } from 'src/app/shared/services/character.service';
 import { filter } from "rxjs/operators";
+import { DOCUMENT } from "@angular/common";
+import { Location } from '@angular/common'
 type RequesInfo = {
   next: string
 };
@@ -18,18 +20,53 @@ export class CharactersListComponent implements OnInit {
   info: RequesInfo = {
     next: '',
   }
-  private pageNum = 1;
-  private query = '';
-  private hideScrollHeigth = 200;
-  private showScrollHeigth = 500;
+  
+  showGoUpButton = false
 
-  constructor(private charService: CharacterService,
+  paramOk = false
+
+  private pageNum = 1;
+
+  private query = '';
+
+  private hideScrollHeight = 200;
+
+  private showScrollHeight = 500;
+
+  constructor(
+              @Inject(DOCUMENT) private document: Document,
+              private charService: CharacterService,
               private route: ActivatedRoute,
+              private location: Location,
               private router: Router )
-  { this.onUrlChanged() }
+  { 
+    this.onUrlChanged() 
+  }
 
   ngOnInit(): void {
     this.getCharactersByQuery();
+  }
+
+  @HostListener('window:scroll', [])
+  onWindowScroll():void {
+    const yOffSet = window.pageYOffset;
+    if ((yOffSet || this.document.documentElement.scrollTop || this.document.body.scrollTop) > this.showScrollHeight) {
+      this.showGoUpButton = true;
+    } else if (this.showGoUpButton && (yOffSet || this.document.documentElement.scrollTop || this.document.body.scrollTop) < this.hideScrollHeight) {
+      this.showGoUpButton = false;
+    }
+  }
+
+  onScrollDown():void{
+    if (this.info.next) {
+      this.pageNum++;
+      this.getDataService();
+    }
+  }
+
+  onScrollTop():void{
+    this.document.body.scrollTop = 0; // Safari
+    this.document.documentElement.scrollTop = 0; // Other
   }
 
   private onUrlChanged(): void{
@@ -38,6 +75,7 @@ export class CharactersListComponent implements OnInit {
     .subscribe(() => {
       this.characters = [];
       this.pageNum = 1;
+      this.paramOk = false;
       this.getCharactersByQuery();
     })
     
@@ -45,8 +83,10 @@ export class CharactersListComponent implements OnInit {
 
   private getCharactersByQuery(): void{
     this.route.queryParams.pipe().subscribe((params) => {
-      console.log('Params -->', params)
       this.query = params['q'];
+      if (this.query) {
+        this.paramOk = true;
+      }
       this.getDataService();
     })
   }
@@ -67,8 +107,9 @@ export class CharactersListComponent implements OnInit {
     } )
   }
 
-}
-function take(arg0: number): import("rxjs").OperatorFunction<Character[], unknown> {
-  throw new Error('Function not implemented.');
+  onGoBack():void {
+    this.location.back();
+  }
+
 }
 

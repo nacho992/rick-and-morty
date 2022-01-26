@@ -1,0 +1,13 @@
+.grid{
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+    padding: 40px 0px 0px 40px;
+    display: grid;
+}
+
+@media(max-width: 570px){
+    .grid{
+        padding-left: 80px;
+    }
+}

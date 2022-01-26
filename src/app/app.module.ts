@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ToolbarHomeComponent } from './components/toolbar-home/toolbar-home.component';
 import { FormSearchComponent } from './shared/components/form-search/form-search.component';
+import { SliderComponent } from './components/slider/slider.component';
 
 @NgModule({
   declarations: [

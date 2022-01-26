@@ -22,17 +22,27 @@
       
       <ul class="nav nav-tabs">
         <li class="nav-item">
-          <a class="nav-link active" data-bs-toggle="tab" href="#home">ALgo</a>
+          <a class="nav-link active" data-bs-toggle="tab" href="#home">{{ character.name }}</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" data-bs-toggle="tab" href="#profile"
-            >Otro datos</a
-          >
+          <a class="nav-link" data-bs-toggle="tab" href="#profile">more</a>
         </li>
       </ul>
       <div id="myTabContent" class="tab-content">
-        <div class="tab-pane fade active show" id="home">destalles</div>
-        <div class="tab-pane fade" id="profile">detalles 1</div>
+
+        <div class="tab-pane fade active show" id="home">
+          <li><h3>Species: {{ character.species }}</h3></li>
+          <li><h3>Status: {{ character.status }}</h3></li>
+          <li><h3>Type: {{ character.type }}</h3></li>
+          <li><h3>Gender: {{ character.gender }}</h3></li>
+          <li><h3>Location: {{ character.location.name }}</h3></li>
+          <li><h3>Created: {{ character.created | date }}</h3></li>
+        </div>
+
+        <div class="tab-pane fade" id="profile">
+          <li><h3>Origin: {{ character.origin.name }}</h3></li>
+          <li><h3>ID in API: {{ character.id }}</h3></li>
+        </div>
       </div>
     </div>
   </div>
