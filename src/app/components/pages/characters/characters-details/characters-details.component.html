@@ -1,1 +1,39 @@
-<p>characters-details works!</p>
+<button (click)="onGoBack()" class="btn btn-primary btn-lg mt-3">Back</button>
+
+<div class="grid" *ngIf="character$ | async as character">
+  <div class="card border-secondary mb-3">
+    <div class="card-body">
+      <div class="img-card">
+        <img
+          [src]="character.image"
+          [alt]="character.name"
+          class="car-img-top"
+        />
+      </div>
+      <h2>{{ character.name }}</h2>
+      <h4 class="text-muted">{{ character.gender }}</h4>
+      <small class="text-muted">{{ character.created | date }}</small>
+    </div>
+  </div>
+
+  <div class="card border-success mb-3">
+    <div class="card-header">{{ character.name }} Details</div>
+    <div class="card-body">
+      
+      <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a class="nav-link active" data-bs-toggle="tab" href="#home">ALgo</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-bs-toggle="tab" href="#profile"
+            >Otro datos</a
+          >
+        </li>
+      </ul>
+      <div id="myTabContent" class="tab-content">
+        <div class="tab-pane fade active show" id="home">destalles</div>
+        <div class="tab-pane fade" id="profile">detalles 1</div>
+      </div>
+    </div>
+  </div>
+</div>
