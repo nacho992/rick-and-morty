@@ -15,7 +15,7 @@ import { SliderComponent } from './components/slider/slider.component';
     FormSearchComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
     HttpClientModule
   ],
