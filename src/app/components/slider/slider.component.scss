@@ -1,14 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700,800,900');
 
-/* body{
-	font-family: 'Poppins', sans-serif;
-	font-weight: 300;
-	font-size: 15px;
-	line-height: 1.7;
-	color: #343434;
-	background-color: #f1f2f6;
-	overflow-x: hidden;
-} */
 a {
 	cursor: pointer;
 }
@@ -53,20 +44,23 @@ a:hover {
   box-sizing: border-box;
   -webkit-transition: all 0.2s ease;
   transition: all 0.2s ease;
-  background-image: url('../../../assets/portada1.jpg');
+  background-image: url('../../../assets/portada1.webp');
   animation: border-transform 6s linear infinite alternate forwards;
     -webkit-animation-play-state: paused;
     -moz-animation-play-state: paused;
     animation-play-state: paused;
 }
 .checkbox.scnd + label{
-  background-image: url('../../../assets/portada2.jpg');
+  background-image: url('../../../assets/portada2.webp');
 }
 .checkbox.thrd + label{
-  background-image: url('../../../assets/portada3.jpg');
+  background-image: url('../../../assets/portada3.webp');
 }
 .checkbox.foth + label{
-  background-image: url('../../../assets/portada4.jpg');
+  background-image: url('../../../assets/portada4.webp');
+}
+.checkbox.five + label{
+  background-image: url('../../../assets/portada5.webp');
 }
 
 .checkbox:checked + label{
@@ -115,7 +109,7 @@ ul li {
   border: 5px solid #bdc3c7;
   background-size: cover;
   background-position: center;
-  background-image: url('../../../assets/portada1.jpg');
+  background-image: url('../../../assets/portada1.webp');
   border-radius: 50%;
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
@@ -136,13 +130,16 @@ ul li span {
   mix-blend-mode: difference;
 }
 ul li:nth-child(2) {
-  background-image: url('../../../assets/portada2.jpg');
+  background-image: url('../../../assets/portada2.webp');
 }
 ul li:nth-child(3) {
-  background-image: url('../../../assets/portada3.jpg');
+  background-image: url('../../../assets/portada3.webp');
 }
 ul li:nth-child(4) {
-  background-image: url('../../../assets/portada4.jpg');
+  background-image: url('../../../assets/portada4.webp');
+}
+ul li:nth-child(5) {
+  background-image: url('../../../assets/portada5.webp');
 }
 
 
@@ -162,6 +159,11 @@ ul li:nth-child(4) {
   border-radius: 16px;
 }
 .checkbox.foth:checked ~ ul li:nth-child(4) {
+  opacity: 1;
+  pointer-events: auto;
+  border-radius: 16px;
+}
+.checkbox.five:checked ~ ul li:nth-child(5) {
   opacity: 1;
   pointer-events: auto;
   border-radius: 16px;
