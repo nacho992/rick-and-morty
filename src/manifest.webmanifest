@@ -3,7 +3,7 @@
   "short_name": "Rick and Morty",
   "theme_color": "#6f42c1",
   "background_color": "#6f42c1",
-  "display": "standalone",
+  "display": "fullscreen",
   "scope": "./",
   "start_url": "./",
   "icons": [
