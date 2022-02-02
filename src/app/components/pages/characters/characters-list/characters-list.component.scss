@@ -11,9 +11,7 @@
 .card {
     box-shadow: 0px 0px 10px #ea39b8, 0px 0px 5px #44d9e8;
     overflow: hidden;
-    box-sizing: border-box;
     margin: 15px 15px 15px 15px;
-    display: inline-grid;
     border-radius: 15px 15px 15px 15px;
     transition: all 0.2 ease-in-out;
     &:hover {
