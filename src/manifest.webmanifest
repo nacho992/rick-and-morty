@@ -47,7 +47,7 @@
       "src": "assets/icons/icon-384x384.png",
       "sizes": "384x384",
       "type": "image/png",
-      "purpose": "insignia"
+      "purpose": "any"
     },
     {
       "src": "assets/icons/fuckSplash-512x512.png",

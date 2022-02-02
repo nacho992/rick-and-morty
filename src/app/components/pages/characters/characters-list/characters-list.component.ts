@@ -2,7 +2,7 @@ import { Component, HostListener, Inject, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Character } from 'src/app/interfaces/character.interface';
 import { CharacterService } from 'src/app/shared/services/character.service';
-import { filter } from "rxjs/operators";
+import { filter, take } from "rxjs/operators";
 import { DOCUMENT } from "@angular/common";
 import { Location } from '@angular/common'
 type RequesInfo = {
@@ -82,7 +82,7 @@ export class CharactersListComponent implements OnInit {
   }
 
   private getCharactersByQuery(): void{
-    this.route.queryParams.pipe().subscribe((params) => {
+    this.route.queryParams.pipe(take(1)).subscribe((params) => {
       this.query = params['q'];
       if (this.query) {
         this.paramOk = true;
@@ -93,7 +93,7 @@ export class CharactersListComponent implements OnInit {
 
   private getDataService(): void {
     this.charService.searchCharacters(this.query, this.pageNum)
-    .pipe()
+    .pipe(take(1))
     .subscribe( (res: any) => {
       if (!res?.results?.length) {
         this.characters = []
